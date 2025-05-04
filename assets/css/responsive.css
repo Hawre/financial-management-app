@@ -1,0 +1,215 @@
+/* Responsive Design Rules for Financial Management App */
+
+/* Base Mobile-First Approach */
+/* All default styles are mobile-first */
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+    .stats-cards {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .quick-actions-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .search-container {
+      display: flex;
+      width: 250px;
+    }
+    
+    .page-header {
+      flex-direction: row;
+      align-items: center;
+    }
+    
+    .date-filter {
+      margin-top: 0;
+    }
+  }
+  
+  /* Medium devices (tablets, 768px and up) */
+  @media (min-width: 768px) {
+    .stats-cards {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .form-row {
+      display: flex;
+    }
+    
+    .form-row > .form-group {
+      padding-right: 0.5rem;
+      padding-left: 0.5rem;
+    }
+    
+    .dashboard-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .mobile-table-view .table,
+    .mobile-table-view .table thead,
+    .mobile-table-view .table tbody,
+    .mobile-table-view .table tr,
+    .mobile-table-view .table th,
+    .mobile-table-view .table td {
+      display: revert;
+      width: auto;
+    }
+    
+    .mobile-table-view .table tr {
+      margin-bottom: 0;
+      border: none;
+      border-radius: 0;
+    }
+    
+    .mobile-table-view .table td {
+      justify-content: revert;
+      text-align: revert;
+      border-top: 1px solid var(--light-gray);
+      border-bottom: none;
+    }
+    
+    .mobile-table-view .table td::before {
+      content: none;
+    }
+  }
+  
+  /* Large devices (desktops, 992px and up) */
+  @media (min-width: 992px) {
+    .stats-cards {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .sidebar {
+      transform: translateX(0);
+    }
+    
+    .sidebar-toggle {
+      display: none;
+    }
+    
+    .main-content {
+      margin-left: 260px;
+    }
+    
+    .quick-actions-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .search-container {
+      width: 300px;
+    }
+    
+    .dashboard-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .cash-flow-chart,
+    .recent-transactions {
+      grid-column: span 2;
+    }
+  }
+  
+  /* Extra large devices (large desktops, 1200px and up) */
+  @media (min-width: 1200px) {
+    .dashboard-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .quick-actions-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .search-container {
+      width: 350px;
+    }
+  }
+  
+  /* Print Styles */
+  @media print {
+    body {
+      background-color: #fff;
+    }
+    
+    .sidebar, 
+    .top-navbar,
+    .card-controls,
+    .action-buttons,
+    .btn {
+      display: none !important;
+    }
+    
+    .container {
+      display: block;
+    }
+    
+    .main-content {
+      margin-left: 0;
+      width: 100%;
+    }
+    
+    .dashboard-card,
+    .page-content {
+      break-inside: avoid;
+      box-shadow: none;
+      border: 1px solid #eee;
+    }
+    
+    .chart-container {
+      height: 250px;
+    }
+  }
+  
+  /* Dark Mode - Commented out for now, could be implemented later */
+  /*
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --primary-color: #64B5F6;
+      --primary-dark: #42A5F5;
+      --primary-light: #BBDEFB;
+      --secondary-color: #FFB74D;
+      --dark-color: #f4f4f4;
+      --light-color: #333;
+      --gray-color: #aaa;
+      --light-gray: #444;
+      --white-color: #222;
+    }
+    
+    body {
+      background-color: #121212;
+      color: var(--dark-color);
+    }
+    
+    .sidebar,
+    .top-navbar,
+    .dashboard-card,
+    .stat-card {
+      background-color: #1E1E1E;
+    }
+    
+    .form-control,
+    .custom-select select {
+      background-color: #2C2C2C;
+      border-color: #444;
+      color: #f4f4f4;
+    }
+    
+    .table {
+      color: #f4f4f4;
+    }
+    
+    .table thead th {
+      background-color: #2C2C2C;
+      color: #f4f4f4;
+    }
+    
+    .table-striped tbody tr:nth-of-type(odd) {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+    
+    .table-hover tbody tr:hover {
+      background-color: rgba(100, 181, 246, 0.1);
+    }
+  }
+  */

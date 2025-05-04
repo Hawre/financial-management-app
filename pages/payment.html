@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Management - Payment Journal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/layout.css">
+    <link rel="stylesheet" href="../../assets/css/components.css">
+    <link rel="stylesheet" href="../../assets/css/tables.css">
+    <link rel="stylesheet" href="../../assets/css/forms.css">
+    <link rel="stylesheet" href="../../assets/css/responsive.css">
+</head>
+<body>
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fas fa-chart-line"></i>
+                    <h2>FinanceFlow</h2>
+                </div>
+                <button class="sidebar-toggle" id="sidebarToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="../dashboard.html" data-page="dashboard">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-dropdown open">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="fas fa-book"></i>
+                            <span>Journals</span>
+                            <i class="fas fa-chevron-down dropdown-icon"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="receipt.html" data-page="receipt-journal">
+                                    <i class="fas fa-arrow-down"></i>
+                                    <span>Receipt</span>
+                                </a>
+                            </li>
+                            <li class="active">
+                                <a href="payment.html" data-page="payment-journal">
+                                    <i class="fas fa-arrow-up"></i>
+                                    <span>Payment</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="transfer.html" data-page="transfer-journal">
+                                    <i class="fas fa-exchange-alt"></i>
+                                    <span>Transfer</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="general.html" data-page="general-journal">
+                                    <i class="fas fa-pen"></i>
+                                    <span>General</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="../chart-of-accounts.html" data-page="chart-of-accounts">
+                            <i class="fas fa-sitemap"></i>
+                            <span>Chart of Accounts</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../customers.html" data-page="customers">
+                            <i class="fas fa-users"></i>
+                            <span>Customers</span>
+                        </a>
+                    </li>
+                    <li class="nav-dropdown">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="fas fa-plane"></i>
+                            <span>Travel</span>
+                            <i class="fas fa-chevron-down dropdown-icon"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../travel/tickets.html" data-page="travel-tickets">
+                                    <i class="fas fa-ticket-alt"></i>
+                                    <span>Tickets</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../travel/visa.html" data-page="travel-visa">
+                                    <i class="fas fa-passport"></i>
+                                    <span>Visa</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="../tasks.html" data-page="tasks">
+                            <i class="fas fa-tasks"></i>
+                            <span>Tasks</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../notes.html" data-page="notes">
+                            <i class="fas fa-sticky-note"></i>
+                            <span>Notes</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <a href="#" class="settings-link">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+                <a href="#" class="help-link">
+                    <i class="fas fa-question-circle"></i>
+                    <span>Help</span>
+                </a>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Navbar -->
+            <nav class="top-navbar">
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search..." class="search-input">
+                </div>
+                
+                <div class="navbar-right">
+                    <div class="notification-icon">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                    
+                    <div class="user-info">
+                        <div class="user-avatar">
+                            <img src="/api/placeholder/40/40" alt="User Avatar">
+                        </div>
+                        <div class="user-details">
+                            <h4>John Smith</h4>
+                            <p>Administrator</p>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            
+            <!-- Payment Journal Content -->
+            <div class="page-content page-payment-journal">
+                <div class="page-header">
+                    <h1>Payment Journal</h1>
+                    <div class="page-actions">
+                        <a href="payment-list.html" class="btn btn-outline">
+                            <i class="fas fa-list"></i> View Payments
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Journal Entry Form -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>New Payment</h3>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Date</label>
+                                    <input type="date" class="form-control" value="2025-05-03">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Reference</label>
+                                    <input type="text" name="reference" class="form-control" placeholder="PAY-05052025">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Vendor</label>
+                                    <div class="custom-select">
+                                        <select class="form-control">
+                                            <option value="">Select Vendor</option>
+                                            <option value="1">Raad Aneed</option>
+                                            <option value="2">Abbas Ali</option>
+                                            <option value="3">Al Hayaf Co.</option>
+                                            <option value="4">New Vendor...</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Pay From</label>
+                                    <div class="custom-select">
+                                        <select class="form-control">
+                                            <option value="">Select Account</option>
+                                            <option value="1110">1110 - Cash</option>
+                                            <option value="1121">1121 - Checking Account</option>
+                                            <option value="1122">1122 - Savings Account</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Payment Method</label>
+                                    <div class="custom-select">
+                                        <select class="form-control">
+                                            <option value="cash">Cash</option>
+                                            <option value="check">Check</option>
+                                            <option value="transfer">Bank Transfer</option>
+                                            <option value="credit">Credit Card</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Description</label>
+                                <textarea class="form-control" placeholder="Enter payment description"></textarea>
+                            </div>
+                            
+                            <h4 class="form-section-title">Payment Items</h4>
+                            
+                            <div class="journal-entries">
+                                <div class="journal-entry">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label class="form-label">Account</label>
+                                            <div class="custom-select">
+                                                <select class="form-control">
+                                                    <option value="">Select Account</option>
+                                                    <option value="2110">2110 - Accounts Payable</option>
+                                                    <option value="5100">5100 - Cost of Goods Sold</option>
+                                                    <option value="5200">5200 - Rent Expense</option>
+                                                    <option value="5300">5300 - Utilities Expense</option>
+                                                    <option value="5400">5400 - Salaries Expense</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label">Description</label>
+                                            <input type="text" class="form-control" placeholder="Description">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label">Amount</label>
+                                            <input type="number" class="form-control" placeholder="0.00">
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-danger btn-sm remove-line-btn">
+                                        <i class="fas fa-trash-alt"></i> Remove
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <button type="button" class="btn btn-outline add-line-btn">
+                                <i class="fas fa-plus"></i> Add Line
+                            </button>
+                            
+                            <div class="form-row mt-4">
+                                <div class="form-group">
+                                    <label class="form-label">Total Amount</label>
+                                    <input type="text" class="form-control" id="total-amount" value="$0.00" readonly>
+                                </div>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="reset" class="btn btn-outline">
+                                    <i class="fas fa-times"></i> Cancel
+                                </button>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-save"></i> Save Payment
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Journal Help -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>Help</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="help-content">
+                            <h4>Payment Journal Guidelines</h4>
+                            <p>The Payment Journal is used to record money paid to vendors, suppliers, or for expenses. Each payment affects at least two accounts:</p>
+                            <ul>
+                                <li><strong>Credit:</strong> The asset account where the money is paid from (Cash, Bank Account, etc.)</li>
+                                <li><strong>Debit:</strong> The expense or payable account that explains why the payment was made</li>
+                            </ul>
+                            
+                            <h4>Common Payment Scenarios</h4>
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Scenario</th>
+                                        <th>Debit (Increases)</th>
+                                        <th>Credit (Decreases)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Pay rent for office space</td>
+                                        <td>Rent Expense</td>
+                                        <td>Cash/Bank Account</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pay utility bill</td>
+                                        <td>Utilities Expense</td>
+                                        <td>Cash/Bank Account</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pay outstanding invoice to supplier</td>
+                                        <td>Accounts Payable</td>
+                                        <td>Cash/Bank Account</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pay employee salaries</td>
+                                        <td>Salaries Expense</td>
+                                        <td>Cash/Bank Account</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="../../assets/js/utils.js" type="module"></script>
+    <script src="../../assets/js/navigation.js" type="module"></script>
+    <script src="../../assets/js/app.js" type="module"></script>
+    <script src="../../assets/js/journals.js" type="module"></script>
+</body>
+</html>

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Management - Chart of Accounts</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/layout.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/tables.css">
+    <link rel="stylesheet" href="../assets/css/forms.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+</head>
+<body>
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fas fa-chart-line"></i>
+                    <h2>FinanceFlow</h2>
+                </div>
+                <button class="sidebar-toggle" id="sidebarToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="dashboard.html" data-page="dashboard">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-dropdown">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="fas fa-book"></i>
+                            <span>Journals</span>
+                            <i class="fas fa-chevron-down dropdown-icon"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="journals/receipt.html" data-page="receipt-journal">
+                                    <i class="fas fa-arrow-down"></i>
+                                    <span>Receipt</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="journals/payment.html" data-page="payment-journal">
+                                    <i class="fas fa-arrow-up"></i>
+                                    <span>Payment</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="journals/transfer.html" data-page="transfer-journal">
+                                    <i class="fas fa-exchange-alt"></i>
+                                    <span>Transfer</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="journals/general.html" data-page="general-journal">
+                                    <i class="fas fa-pen"></i>
+                                    <span>General</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="active">
+                        <a href="chart-of-accounts.html" data-page="chart-of-accounts">
+                            <i class="fas fa-sitemap"></i>
+                            <span>Chart of Accounts</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="customers.html" data-page="customers">
+                            <i class="fas fa-users"></i>
+                            <span>Customers</span>
+                        </a>
+                    </li>
+                    <li class="nav-dropdown">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="fas fa-plane"></i>
+                            <span>Travel</span>
+                            <i class="fas fa-chevron-down dropdown-icon"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="travel/tickets.html" data-page="travel-tickets">
+                                    <i class="fas fa-ticket-alt"></i>
+                                    <span>Tickets</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="travel/visa.html" data-page="travel-visa">
+                                    <i class="fas fa-passport"></i>
+                                    <span>Visa</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="tasks.html" data-page="tasks">
+                            <i class="fas fa-tasks"></i>
+                            <span>Tasks</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="notes.html" data-page="notes">
+                            <i class="fas fa-sticky-note"></i>
+                            <span>Notes</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <a href="#" class="settings-link">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+                <a href="#" class="help-link">
+                    <i class="fas fa-question-circle"></i>
+                    <span>Help</span>
+                </a>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Navbar -->
+            <nav class="top-navbar">
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search..." class="search-input">
+                </div>
+                
+                <div class="navbar-right">
+                    <div class="notification-icon">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                    
+                    <div class="user-info">
+                        <div class="user-avatar">
+                            <img src="/api/placeholder/40/40" alt="User Avatar">
+                        </div>
+                        <div class="user-details">
+                            <h4>John Smith</h4>
+                            <p>Administrator</p>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            
+            <!-- Page Content -->
+            <div class="page-content page-chart-of-accounts">
+                <div class="page-header">
+                    <h1>Chart of Accounts</h1>
+                    <button id="add-account-btn" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Add Account
+                    </button>
+                </div>
+                
+                <!-- Account Statistics -->
+                <div class="stats-cards">
+                    <div class="stat-card">
+                        <div class="stat-icon income">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>Total Assets</h3>
+                            <p id="asset-total" class="stat-value positive">$80,630.82</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon expense">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>Total Liabilities</h3>
+                            <p id="liability-total" class="stat-value negative">$8,450.75</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon profit">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>Total Equity</h3>
+                            <p id="equity-total" class="stat-value positive">$50,000.00</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon accounts">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>Net Income</h3>
+                            <p id="net-income" class="stat-value positive">$14,190.00</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Accounts Table -->
+                <div class="table-card">
+                    <div class="card-header">
+                        <h3>Accounts</h3>
+                        <div class="table-filters">
+                            <select id="account-type-filter" class="form-control">
+                                <option value="all">All Types</option>
+                                <option value="Asset">Assets</option>
+                                <option value="Liability">Liabilities</option>
+                                <option value="Equity">Equity</option>
+                                <option value="Revenue">Revenue</option>
+                                <option value="Expense">Expenses</option>
+                            </select>
+                            <div class="table-search">
+                                <input type="text" id="account-search" class="form-control" placeholder="Search accounts...">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover accounts-table">
+                            <thead>
+                                <tr>
+                                    <th>Code</th>
+                                    <th>Account Name</th>
+                                    <th>Type</th>
+                                    <th class="text-right">Balance</th>
+                                    <th class="text-right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Account rows will be added dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- Account Form Modal -->
+                <div id="account-form-container" class="modal-container" style="display: none;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 id="account-form-title">Add Account</h3>
+                            <button type="button" class="close-btn">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="account-form">
+                                <div class="form-group">
+                                    <label for="account-code" class="form-label">Account Code</label>
+                                    <input type="text" class="form-control" id="account-code" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="account-name" class="form-label">Account Name</label>
+                                    <input type="text" class="form-control" id="account-name" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="account-type" class="form-label">Account Type</label>
+                                    <div class="custom-select">
+                                        <select class="form-control" id="account-type" required>
+                                            <option value="">Select Type</option>
+                                            <option value="Asset">Asset</option>
+                                            <option value="Liability">Liability</option>
+                                            <option value="Equity">Equity</option>
+                                            <option value="Revenue">Revenue</option>
+                                            <option value="Expense">Expense</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="account-balance" class="form-label">Opening Balance</label>
+                                    <input type="number" class="form-control" id="account-balance" step="0.01" value="0">
+                                </div>
+                                
+                                <div class="form-actions">
+                                    <button type="button" id="cancel-account-btn" class="btn btn-outline">Cancel</button>
+                                    <button type="submit" class="btn btn-primary">Save Account</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="../assets/js/utils.js" type="module"></script>
+    <script src="../assets/js/navigation.js" type="module"></script>
+    <script src="../assets/js/app.js" type="module"></script>
+    <script src="../assets/js/accounts.js" type="module"></script>
+</body>
+</html>

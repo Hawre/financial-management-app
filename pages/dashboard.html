@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Management - Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/layout.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/tables.css">
+    <link rel="stylesheet" href="../assets/css/forms.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+</head>
+<body>
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fas fa-chart-line"></i>
+                    <h2>FinanceFlow</h2>
+                </div>
+                <button class="sidebar-toggle" id="sidebarToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active">
+                        <a href="dashboard.html" data-page="dashboard">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-dropdown">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="fas fa-book"></i>
+                            <span>Journals</span>
+                            <i class="fas fa-chevron-down dropdown-icon"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="journals/receipt.html" data-page="receipt-journal">
+                                    <i class="fas fa-arrow-down"></i>
+                                    <span>Receipt</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="journals/payment.html" data-page="payment-journal">
+                                    <i class="fas fa-arrow-up"></i>
+                                    <span>Payment</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="journals/transfer.html" data-page="transfer-journal">
+                                    <i class="fas fa-exchange-alt"></i>
+                                    <span>Transfer</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="journals/general.html" data-page="general-journal">
+                                    <i class="fas fa-pen"></i>
+                                    <span>General</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="chart-of-accounts.html" data-page="chart-of-accounts">
+                            <i class="fas fa-sitemap"></i>
+                            <span>Chart of Accounts</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="customers.html" data-page="customers">
+                            <i class="fas fa-users"></i>
+                            <span>Customers</span>
+                        </a>
+                    </li>
+                    <li class="nav-dropdown">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="fas fa-plane"></i>
+                            <span>Travel</span>
+                            <i class="fas fa-chevron-down dropdown-icon"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="travel/tickets.html" data-page="travel-tickets">
+                                    <i class="fas fa-ticket-alt"></i>
+                                    <span>Tickets</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="travel/visa.html" data-page="travel-visa">
+                                    <i class="fas fa-passport"></i>
+                                    <span>Visa</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="tasks.html" data-page="tasks">
+                            <i class="fas fa-tasks"></i>
+                            <span>Tasks</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="notes.html" data-page="notes">
+                            <i class="fas fa-sticky-note"></i>
+                            <span>Notes</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <a href="#" class="settings-link">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+                <a href="#" class="help-link">
+                    <i class="fas fa-question-circle"></i>
+                    <span>Help</span>
+                </a>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Navbar -->
+            <nav class="top-navbar">
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search..." class="search-input">
+                </div>
+                
+                <div class="navbar-right">
+                    <div class="notification-icon">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                    
+                    <div class="user-info">
+                        <div class="user-avatar">
+                            <img src="/api/placeholder/40/40" alt="User Avatar">
+                        </div>
+                        <div class="user-details">
+                            <h4>John Smith</h4>
+                            <p>Administrator</p>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            
+            <!-- Dashboard Content -->
+            <div class="page-content page-dashboard">
+                <div class="page-header">
+                    <h1>Dashboard</h1>
+                    <div class="date-filter">
+                        <label>Date Range:</label>
+                        <select id="dateRangeSelect">
+                            <option value="today">Today</option>
+                            <option value="yesterday">Yesterday</option>
+                            <option value="week" selected>This Week</option>
+                            <option value="month">This Month</option>
+                            <option value="quarter">This Quarter</option>
+                            <option value="year">This Year</option>
+                            <option value="custom">Custom Range</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Quick Stats Cards -->
+                <div class="stats-cards">
+                    <div class="stat-card">
+                        <div class="stat-icon income">
+                            <i class="fas fa-arrow-down"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>Total Income</h3>
+                            <p class="stat-value">$32,450</p>
+                            <p class="stat-change positive">+12.5% <span>from last period</span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon expense">
+                            <i class="fas fa-arrow-up"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>Total Expenses</h3>
+                            <p class="stat-value">$18,260</p>
+                            <p class="stat-change negative">+8.3% <span>from last period</span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon profit">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>Net Profit</h3>
+                            <p class="stat-value">$14,190</p>
+                            <p class="stat-change positive">+16.8% <span>from last period</span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon accounts">
+                            <i class="fas fa-file-invoice"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>Pending Invoices</h3>
+                            <p class="stat-value">12</p>
+                            <p class="stat-change">$8,320 <span>total value</span></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Main Charts Section -->
+                <div class="dashboard-grid">
+                    <!-- Cash Flow Chart -->
+                    <div class="dashboard-card cash-flow-chart">
+                        <div class="card-header">
+                            <h3>Cash Flow</h3>
+                            <div class="card-controls">
+                                <button class="btn btn-sm btn-outline">
+                                    <i class="fas fa-download"></i> Export
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart-container">
+                                <canvas id="cashFlowChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Income by Category -->
+                    <div class="dashboard-card income-category">
+                        <div class="card-header">
+                            <h3>Income by Category</h3>
+                            <div class="card-controls">
+                                <select id="incomePeriodSelect">
+                                    <option value="week">This Week</option>
+                                    <option value="month" selected>This Month</option>
+                                    <option value="quarter">This Quarter</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart-container">
+                                <canvas id="incomePieChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Recent Transactions -->
+                    <div class="dashboard-card recent-transactions">
+                        <div class="card-header">
+                            <h3>Recent Transactions</h3>
+                            <div class="card-controls">
+                                <a href="#" class="view-all-link">View All</a>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="transaction-list">
+                                <div class="transaction-item">
+                                    <div class="transaction-icon receipt">
+                                        <i class="fas fa-arrow-down"></i>
+                                    </div>
+                                    <div class="transaction-details">
+                                        <div class="transaction-main">
+                                            <h4>Received from Karwan Khalil</h4>
+                                            <span class="amount income">$12,800</span>
+                                        </div>
+                                        <div class="transaction-meta">
+                                            <span class="date">Apr 25, 2025</span>
+                                            <span class="ref">REC-25042025</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="transaction-item">
+                                    <div class="transaction-icon payment">
+                                        <i class="fas fa-arrow-up"></i>
+                                    </div>
+                                    <div class="transaction-details">
+                                        <div class="transaction-main">
+                                            <h4>Paid to Raad Aneed</h4>
+                                            <span class="amount expense">$4,500</span>
+                                        </div>
+                                        <div class="transaction-meta">
+                                            <span class="date">Apr 25, 2025</span>
+                                            <span class="ref">PAY-25042025</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="transaction-item">
+                                    <div class="transaction-icon journal">
+                                        <i class="fas fa-pen"></i>
+                                    </div>
+                                    <div class="transaction-details">
+                                        <div class="transaction-main">
+                                            <h4>Monthly Depreciation</h4>
+                                            <span class="amount">$1,200</span>
+                                        </div>
+                                        <div class="transaction-meta">
+                                            <span class="date">Apr 24, 2025</span>
+                                            <span class="ref">JNL-24042025</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="transaction-item">
+                                    <div class="transaction-icon transfer">
+                                        <i class="fas fa-exchange-alt"></i>
+                                    </div>
+                                    <div class="transaction-details">
+                                        <div class="transaction-main">
+                                            <h4>Transfer to Cash Account</h4>
+                                            <span class="amount">$8,320</span>
+                                        </div>
+                                        <div class="transaction-meta">
+                                            <span class="date">Apr 23, 2025</span>
+                                            <span class="ref">TRF-23042025</span>
+                                            <span class="status pending">Pending</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="transaction-item">
+                                    <div class="transaction-icon payment">
+                                        <i class="fas fa-arrow-up"></i>
+                                    </div>
+                                    <div class="transaction-details">
+                                        <div class="transaction-main">
+                                            <h4>Paid to Abbas Ali</h4>
+                                            <span class="amount expense">$1,250</span>
+                                        </div>
+                                        <div class="transaction-meta">
+                                            <span class="date">Apr 23, 2025</span>
+                                            <span class="ref">PAY-23042025</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Expense by Category -->
+                    <div class="dashboard-card expense-category">
+                        <div class="card-header">
+                            <h3>Expense by Category</h3>
+                            <div class="card-controls">
+                                <select id="expensePeriodSelect">
+                                    <option value="week">This Week</option>
+                                    <option value="month" selected>This Month</option>
+                                    <option value="quarter">This Quarter</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart-container">
+                                <canvas id="expensePieChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Account Balances -->
+                    <div class="dashboard-card account-balances">
+                        <div class="card-header">
+                            <h3>Account Balances</h3>
+                            <div class="card-controls">
+                                <button class="btn btn-sm btn-primary">
+                                    <i class="fas fa-plus"></i> Add Account
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="accounts-list">
+                                <div class="account-item">
+                                    <div class="account-info">
+                                        <h4>Checking Account</h4>
+                                        <p class="account-number">1121</p>
+                                    </div>
+                                    <div class="account-balance">
+                                        <p class="balance-amount">$28,450.32</p>
+                                        <div class="balance-trend positive">+$3,240 (30d)</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="account-item">
+                                    <div class="account-info">
+                                        <h4>Savings Account</h4>
+                                        <p class="account-number">1122</p>
+                                    </div>
+                                    <div class="account-balance">
+                                        <p class="balance-amount">$35,620.00</p>
+                                        <div class="balance-trend positive">+$5,000 (30d)</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="account-item">
+                                    <div class="account-info">
+                                        <h4>Cash</h4>
+                                        <p class="account-number">1110</p>
+                                    </div>
+                                    <div class="account-balance">
+                                        <p class="balance-amount">$4,580.00</p>
+                                        <div class="balance-trend negative">-$1,320 (30d)</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="account-item">
+                                    <div class="account-info">
+                                        <h4>Accounts Receivable</h4>
+                                        <p class="account-number">1130</p>
+                                    </div>
+                                    <div class="account-balance">
+                                        <p class="balance-amount">$12,380.50</p>
+                                        <div class="balance-trend positive">+$8,320 (30d)</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Actions -->
+                    <div class="dashboard-card quick-actions">
+                        <div class="card-header">
+                            <h3>Quick Actions</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="quick-actions-grid">
+                                <a href="journals/receipt.html" class="quick-action-btn">
+                                    <i class="fas fa-arrow-down"></i>
+                                    <span>New Receipt</span>
+                                </a>
+                                <a href="journals/payment.html" class="quick-action-btn">
+                                    <i class="fas fa-arrow-up"></i>
+                                    <span>New Payment</span>
+                                </a>
+                                <a href="journals/transfer.html" class="quick-action-btn">
+                                    <i class="fas fa-exchange-alt"></i>
+                                    <span>New Transfer</span>
+                                </a>
+                                <a href="journals/general.html" class="quick-action-btn">
+                                    <i class="fas fa-pen"></i>
+                                    <span>General Journal</span>
+                                </a>
+                                <a href="chart-of-accounts.html" class="quick-action-btn">
+                                    <i class="fas fa-sitemap"></i>
+                                    <span>Chart of Accounts</span>
+                                </a>
+                                <a href="#" class="quick-action-btn">
+                                    <i class="fas fa-file-invoice"></i>
+                                    <span>Reports</span>
+                                </a>
+                                <a href="customers.html" class="quick-action-btn">
+                                    <i class="fas fa-users"></i>
+                                    <span>Customers</span>
+                                </a>
+                                <a href="#" class="quick-action-btn">
+                                    <i class="fas fa-truck"></i>
+                                    <span>Vendors</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Upcoming Tasks & Reminders -->
+                <div class="dashboard-row">
+                    <div class="dashboard-card upcoming-tasks">
+                        <div class="card-header">
+                            <h3>Upcoming Tasks</h3>
+                            <div class="card-controls">
+                                <a href="tasks.html" class="view-all-link">View All</a>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="tasks-list">
+                                <div class="task-item priority-high">
+                                    <div class="task-checkbox">
+                                        <input type="checkbox" id="task1">
+                                        <label for="task1"></label>
+                                    </div>
+                                    <div class="task-details">
+                                        <h4>Prepare Q2 financial report</h4>
+                                        <div class="task-meta">
+                                            <span class="due-date"><i class="fas fa-calendar"></i> May 05, 2025</span>
+                                            <span class="priority">High Priority</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="task-item priority-medium">
+                                    <div class="task-checkbox">
+                                        <input type="checkbox" id="task2">
+                                        <label for="task2"></label>
+                                    </div>
+                                    <div class="task-details">
+                                        <h4>Review vendor invoices</h4>
+                                        <div class="task-meta">
+                                            <span class="due-date"><i class="fas fa-calendar"></i> May 07, 2025</span>
+                                            <span class="priority">Medium Priority</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="task-item priority-medium">
+                                    <div class="task-checkbox">
+                                        <input type="checkbox" id="task3">
+                                        <label for="task3"></label>
+                                    </div>
+                                    <div class="task-details">
+                                        <h4>Pay office rent</h4>
+                                        <div class="task-meta">
+                                            <span class="due-date"><i class="fas fa-calendar"></i> May 10, 2025</span>
+                                            <span class="priority">Medium Priority</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="task-item priority-low">
+                                    <div class="task-checkbox">
+                                        <input type="checkbox" id="task4">
+                                        <label for="task4"></label>
+                                    </div>
+                                    <div class="task-details">
+                                        <h4>Staff meeting on budget planning</h4>
+                                        <div class="task-meta">
+                                            <span class="due-date"><i class="fas fa-calendar"></i> May 12, 2025</span>
+                                            <span class="priority">Low Priority</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="../assets/js/utils.js" type="module"></script>
+    <script src="../assets/js/navigation.js" type="module"></script>
+    <script src="../assets/js/app.js" type="module"></script>
+    <script src="../assets/js/dashboard.js" type="module"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    
+    <script>
+        // Initialize charts when the page is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            initCashFlowChart();
+            initIncomePieChart();
+            initExpensePieChart();
+            
+            // Event delegation for task checkboxes
+            document.querySelector('.tasks-list').addEventListener('change', function(e) {
+                if (e.target.type === 'checkbox') {
+                    const taskItem = e.target.closest('.task-item');
+                    if (e.target.checked) {
+                        taskItem.classList.add('completed');
+                    } else {
+                        taskItem.classList.remove('completed');
+                    }
+                }
+            });
+        });
+        
+        function initCashFlowChart() {
+            const ctx = document.getElementById('cashFlowChart').getContext('2d');
+            const cashFlowChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Apr 1', 'Apr 7', 'Apr 14', 'Apr 21', 'Apr 28', 'May 3'],
+                    datasets: [
+                        {
+                            label: 'Income',
+                            data: [6200, 15800, 20400, 27300, 32450, 32450],
+                            borderColor: '#4CAF50',
+                            backgroundColor: 'rgba(76, 175, 80, 0.1)',
+                            tension: 0.4,
+                            fill: true
+                        },
+                        {
+                            label: 'Expenses',
+                            data: [3800, 8200, 11500, 15400, 18260, 18260],
+                            borderColor: '#F44336',
+                            backgroundColor: 'rgba(244, 67, 54, 0.1)',
+                            tension: 0.4,
+                            fill: true
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.y !== null) {
+                                        label += new Intl.NumberFormat('en-US', {
+                                            style: 'currency',
+                                            currency: 'USD'
+                                        }).format(context.parsed.y);
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: {
+                                display: false
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + value.toLocaleString();
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        
+        function initIncomePieChart() {
+            const ctx = document.getElementById('incomePieChart').getContext('2d');
+            const incomePieChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Sales', 'Services', 'Investments', 'Other'],
+                    datasets: [{
+                        data: [18500, 9200, 3800, 950],
+                        backgroundColor: [
+                            '#4CAF50',
+                            '#2196F3',
+                            '#9C27B0',
+                            '#FF9800'
+                        ],
+                        borderColor: '#FFFFFF',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const label = context.label || '';
+                                    const value = context.raw;
+                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                    const percentage = Math.round((value / total) * 100);
+                                    return `${label}: $${value.toLocaleString()} (${percentage}%)`;
+                                }
+                            }
+                        }
+                    },
+                    cutout: '60%'
+                }
+            });
+        }
+        
+        function initExpensePieChart() {
+            const ctx = document.getElementById('expensePieChart').getContext('2d');
+            const expensePieChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Rent', 'Salaries', 'Utilities', 'Supplies', 'Marketing', 'Other'],
+                    datasets: [{
+                        data: [2500, 8200, 1750, 2300, 2100, 1410],
+                        backgroundColor: [
+                            '#F44336',
+                            '#E91E63',
+                            '#9C27B0',
+                            '#673AB7',
+                            '#3F51B5',
+                            '#607D8B'
+                        ],
+                        borderColor: '#FFFFFF',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const label = context.label || '';
+                                    const value = context.raw;
+                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                    const percentage = Math.round((value / total) * 100);
+                                    return `${label}: $${value.toLocaleString()} (${percentage}%)`;
+                                }
+                            }
+                        }
+                    },
+                    cutout: '60%'
+                }
+            });
+        }
+    </script>
+</body>
+</html>
