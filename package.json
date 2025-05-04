@@ -1,0 +1,21 @@
+{
+  "name": "financial-management-app",
+  "version": "1.0.0",
+  "description": "Financial management application for tracking expenses, income, and accounts",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server",
+    "build": "mkdir -p dist && cp -r index.html assets pages dist/"
+  },
+  "keywords": [
+    "finance",
+    "accounting",
+    "journal",
+    "dashboard"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}
